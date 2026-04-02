@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Dunia Anak Dan Bapak</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- ICON -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
+  <div class="container">
+    
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold" href="index.html">DuniaAnakDanBapak</a>
+
+    <!-- Toggle -->
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      ☰
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse" id="navMenu">
+
+      <!-- CENTER MENU -->
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="product.html">Produk</a>
+        </li>
+      </ul>
+
+      <!-- RIGHT MENU -->
+      <div class="d-flex align-items-center gap-3">
+
+        <!-- ADMIN BUTTON -->
+        <a href="admin.html" class="btn btn-dark btn-sm">
+          <i class="bi bi-gear"></i> Admin
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero-carousel">
+
+  <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+
+    <div class="carousel-inner">
+
+      <!-- SLIDE 1 -->
+      <div class="carousel-item active">
+        <img src="assets/img/ban1.png" class="d-block w-100 hero-img">
+        <div class="carousel-caption">
+          <h2 class="fw-bold">Koleksi Terbaik untuk Anak & Bapak</h2>
+          <p>Temukan figures, TCG, dan aksesoris favoritmu di satu tempat.</p>
+          <a href="product.html" class="btn btn-warning btn-sm">Lihat Produk</a>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="carousel-item">
+        <img src="assets/img/ban2.png" class="d-block w-100 hero-img">
+        <div class="carousel-caption">
+          <h2 class="fw-bold">Figure & Koleksi Eksklusif</h2>
+          <p>Koleksi limited dan rare item siap untuk kamu miliki.</p>
+          <a href="product.html" class="btn btn-warning btn-sm">Belanja Sekarang</a>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="carousel-item">
+        <img src="assets/img/ban3.png" class="d-block w-100 hero-img">
+        <div class="carousel-caption">
+          <h2 class="fw-bold">Trading Card Game Populer</h2>
+          <p>Dari Pokemon hingga One Piece, semua ada di sini.</p>
+          <a href="product.html" class="btn btn-warning btn-sm">Explore</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CONTROL -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+
+  </div>
+
+</section>
+
+<!-- Search + Filter -->
+<section class="container py-5">
+
+  <h2 class="mb-4">Produk</h2>
+
+  <input type="text" id="searchInput" class="form-control mb-3" placeholder="Cari produk...">
+
+  <!-- Category -->
+  <div class="mb-3">
+    <button class="btn btn-outline-dark btn-sm" onclick="setCategory('All')">All</button>
+    <button class="btn btn-outline-dark btn-sm" onclick="setCategory('Figures')">Figures</button>
+    <button class="btn btn-outline-dark btn-sm" onclick="setCategory('TCG')">Trading Card Game</button>
+    <button class="btn btn-outline-dark btn-sm" onclick="setCategory('Accessories')">Aksesoris</button>
+  </div>
+
+  <div class="mb-4" id="subFilter"></div>
+
+  <div class="row g-4" id="productList"></div>
+
+</section>
+<!-- 🔍 PRODUCT DETAIL MODAL -->
+<div class="modal fade" id="productModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-body p-4">
+        <div class="row">
+
+          <!-- IMAGE -->
+          <div class="col-md-6 text-center">
+            <img id="modalImage" class="img-fluid modal-img">
+          </div>
+
+          <!-- INFO -->
+          <div class="col-md-6">
+
+            <h4 id="modalName" class="fw-bold"></h4>
+            <p id="modalCategory" class="text-muted"></p>
+
+            <h5 id="modalPrice" class="fw-bold mt-2"></h5>
+            <p id="modalStock" class="mt-2"></p>
+
+            <hr>
+
+            <p class="small text-muted">
+              Produk koleksi berkualitas tinggi, cocok untuk kolektor maupun hadiah spesial.
+            </p>
+
+            <a id="modalBuyBtn" target="_blank" class="btn btn-dark w-100">
+              <i class="bi bi-cart"></i> Beli Sekarang
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Footer Modern -->
+<footer class="footer-modern py-4">
+  <div class="container">
+    <div class="row align-items-center text-center text-lg-start">
+
+      <!-- Kiri -->
+      <div class="col-lg-4 mb-3 mb-lg-0">
+        © 2026 Dunia Anak Dan Bapak
+      </div>
+
+      <!-- Tengah -->
+      <div class="col-lg-4 mb-3 mb-lg-0 text-center">
+        <a class="btn btn-dark btn-social mx-2" href="https://wa.me/6289601990444?text=Halo%20saya%20ingin%20bertanya%20tentang%20Produk-produk" target="_blank"><i class="bi bi-whatsapp"></i></a>
+        <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/soncantare" target="_blank">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <!-- <a class="btn btn-dark btn-social mx-2" href="#"><i class="bi bi-linkedin"></i></a> -->
+      </div>
+
+      <!-- Kanan -->
+      <div class="col-lg-4 text-lg-end">
+        <!-- <a class="link-dark text-decoration-none me-3" href="#">Privacy Policy</a>
+        <a class="link-dark text-decoration-none" href="#">Terms of Use</a> -->
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<!-- FAB WhatsApp -->
+<a href="https://wa.me/6289601990444?text=Halo%20saya%20ingin%20bertanya%20tentang%20Produk-produk"
+   class="fab-wa" target="_blank">
+  <i class="bi bi-whatsapp"></i>
+  <span class="fab-text">Perlu Bantuan?</span>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
